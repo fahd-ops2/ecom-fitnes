@@ -1,0 +1,183 @@
+databaseChangeLog:
+  - changeSet:
+        id: create_customers_table
+        author: Fahd bouacherine
+        changes:
+          - createTable:
+              tableName: customers
+              columns:
+                - column:
+                    name: id
+                    type: BIGINT
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                      autoIncrement: true
+                - column:
+                    name: name
+                    type: VARCHAR(255)
+                    constraints:
+                      nullable: false
+                - column:
+                    name: email
+                    type: VARCHAR(255)
+                - column:
+                    name: phone
+                    type: VARCHAR(20)
+  - changeSet:
+      id: create_categories_table
+      author: Fahd Bouacherine
+      changes:
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: create_product_table
+      author: Fahd Bouacherine
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: reference
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: price
+                  type: DOUBLE
+
+  - changeSet:
+      id: create_providers_table
+      author: Fahd Bouacherine
+      changes:
+        - createTable:
+            tableName: providers
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: create_stocks_table
+      author: Fahd Bouacherine
+      changes:
+        - createTable:
+            tableName: stocks
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: product_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: INT
+              - addForeignKeyConstraint:
+                  baseTableName: Stock
+                  baseColumnNames:
+                    - product_id
+                  referencedTableName: products
+                  referencedColumnNames:
+                    - id
+
+  - changeSet:
+      id: create_stores_table
+      author: Fahd Bouacherine
+      changes:
+        - createTable:
+            tableName: stores
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: VARCHAR(255)
+
+  - changeSet:
+      id: create_Product_Store_table
+      author: Fahd Bouacherine
+      changes:
+        - createTable:
+            tableName: products_stores
+            columns:
+              - column:
+                  name: product_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: store_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+            primaryKey:
+              - column:
+                  name: product_id
+              - column:
+                  name: store_id
+            foreignKeyConstraints:
+              - baseTableName: products_stores
+                referencedTableName: products
+                baseColumnNames:
+                  - product_id
+                referencedColumnNames:
+                  - id
+              - baseTableName: products_stores
+                referencedTableName: stores
+                baseColumnNames:
+                  - store_id
+                referencedColumnNames:
+                  - id

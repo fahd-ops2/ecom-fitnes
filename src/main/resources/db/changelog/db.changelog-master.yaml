@@ -1,0 +1,3 @@
+databaseChangeLog:
+  - include:
+      file: scripts/initiate-database.yaml
