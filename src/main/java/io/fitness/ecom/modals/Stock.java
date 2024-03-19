@@ -24,4 +24,8 @@ public class Stock {
     @Column
     private int quantity;
 
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
+
 }

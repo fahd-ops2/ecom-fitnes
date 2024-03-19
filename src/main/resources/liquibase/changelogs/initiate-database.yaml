@@ -76,14 +76,10 @@ databaseChangeLog:
                   name: category_id
                   type: BIGINT
                   constraints:
+                    foreignKeyName: products_fk_categories_id
+                    references: categories(id)
                     nullable: false
-        - addForeignKeyConstraint:
-          baseTableName: products
-          baseColumnNames:
-            - category_id
-          referencedTableName: categories
-          referencedColumnNames:
-            - id
+
 
   - changeSet:
       id: create_providers_table
@@ -105,28 +101,6 @@ databaseChangeLog:
                   constraints:
                     nullable: false
 
-  - changeSet:
-      id: create_stocks_table
-      author: Fahd Bouacherine
-      changes:
-        - createTable:
-            tableName: stocks
-            columns:
-              - column:
-                  name: id
-                  type: BIGINT
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-                    autoIncrement: true
-              - column:
-                  name: product_id
-                  type: BIGINT
-                  constraints:
-                    nullable: false
-              - column:
-                  name: quantity
-                  type: INT
   - changeSet:
       id: create_stores_table
       author: Fahd Bouacherine
@@ -150,19 +124,40 @@ databaseChangeLog:
                   name: address
                   type: VARCHAR(255)
               - column:
-                  name: stock_id
-                  type: BIGINT
-                  constraints:
-                    nullable: false
-              - column:
                   name: provider_id
                   type: BIGINT
                   constraints:
+                    foreignKeyName: stores_fk_providers_id
+                    references: providers(id)
                     nullable: false
-        - addForeignKeyConstraint:
-          baseTableName: stores
-          baseColumnNames:
-            - provider_id
-          referencedTableName: providers
-          referencedColumnNames:
-            - id
+  - changeSet:
+      id: create_stocks_table
+      author: Fahd Bouacherine
+      changes:
+        - createTable:
+            tableName: stocks
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: product_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: stocks_fk_products_id
+                    references: products(id)
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: INT
+              - column:
+                  name: store_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: stocks_fk_stores_id
+                    references: stores(id)
+                    nullable: false

@@ -26,4 +26,7 @@ public class Store {
     @ManyToOne
     @JoinColumn(name = "provider_id")
     private Provider provider;
+
+    @OneToMany(mappedBy = "store")
+    private List<Stock> stocks;
 }
