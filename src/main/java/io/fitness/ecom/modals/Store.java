@@ -1,7 +1,6 @@
 package io.fitness.ecom.modals;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,8 +16,14 @@ import java.util.List;
 @Table(name = "stores")
 public class Store {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
+    @Column
     private String address;
-    private List<Product> products;
+    @ManyToOne
+    @JoinColumn(name = "provider_id")
+    private Provider provider;
 }

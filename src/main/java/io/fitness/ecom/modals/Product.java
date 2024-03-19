@@ -1,7 +1,6 @@
 package io.fitness.ecom.modals;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,9 +14,19 @@ import lombok.Setter;
 @Table(name = "products")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+    @Column
     private String reference;
+    @Column
     private String description;
+    @Column
     private double price;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
