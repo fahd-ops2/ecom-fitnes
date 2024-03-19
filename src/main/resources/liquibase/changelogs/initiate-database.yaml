@@ -1,29 +1,30 @@
 databaseChangeLog:
   - changeSet:
-        id: create_customers_table
-        author: Fahd bouacherine
-        changes:
-          - createTable:
-              tableName: customers
-              columns:
-                - column:
-                    name: id
-                    type: BIGINT
-                    constraints:
-                      primaryKey: true
-                      nullable: false
-                      autoIncrement: true
-                - column:
-                    name: name
-                    type: VARCHAR(255)
-                    constraints:
-                      nullable: false
-                - column:
-                    name: email
-                    type: VARCHAR(255)
-                - column:
-                    name: phone
-                    type: VARCHAR(20)
+      id: create_customers_table
+      author: Fahd bouacherine
+      changes:
+        - createTable:
+            tableName: customers
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: phone
+                  type: VARCHAR(20)
+
   - changeSet:
       id: create_categories_table
       author: Fahd Bouacherine
@@ -34,10 +35,10 @@ databaseChangeLog:
               - column:
                   name: id
                   type: BIGINT
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
-                    autoIncrement: true
               - column:
                   name: name
                   type: VARCHAR(255)
@@ -54,10 +55,10 @@ databaseChangeLog:
               - column:
                   name: id
                   type: BIGINT
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
-                    autoIncrement: true
               - column:
                   name: name
                   type: VARCHAR(255)
@@ -80,7 +81,6 @@ databaseChangeLog:
                     references: categories(id)
                     nullable: false
 
-
   - changeSet:
       id: create_providers_table
       author: Fahd Bouacherine
@@ -91,10 +91,10 @@ databaseChangeLog:
               - column:
                   name: id
                   type: BIGINT
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
-                    autoIncrement: true
               - column:
                   name: name
                   type: VARCHAR(255)
@@ -111,10 +111,10 @@ databaseChangeLog:
               - column:
                   name: id
                   type: BIGINT
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
-                    autoIncrement: true
               - column:
                   name: name
                   type: VARCHAR(255)
@@ -130,6 +130,7 @@ databaseChangeLog:
                     foreignKeyName: stores_fk_providers_id
                     references: providers(id)
                     nullable: false
+
   - changeSet:
       id: create_stocks_table
       author: Fahd Bouacherine
@@ -140,10 +141,10 @@ databaseChangeLog:
               - column:
                   name: id
                   type: BIGINT
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
-                    autoIncrement: true
               - column:
                   name: product_id
                   type: BIGINT
