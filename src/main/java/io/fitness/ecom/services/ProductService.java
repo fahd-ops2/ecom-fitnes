@@ -19,6 +19,7 @@ public class ProductService {
     }
 
     public List<ProductDto> getAllProducts() {
-        return ProductMapper.INSTANCE.productsToProductDtos(productRepository.findAll());
+        List<ProductDto> productDtos = ProductMapper.INSTANCE.productsToProductDtos(productRepository.findAll());
+        return productDtos;
     }
 }

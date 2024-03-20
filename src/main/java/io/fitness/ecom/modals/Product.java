@@ -1,6 +1,5 @@
 package io.fitness.ecom.modals;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,16 +18,15 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
-    @Column
+    @Column(name = "reference")
     private String reference;
-    @Column
+    @Column(name = "description")
     private String description;
-    @Column
+    @Column(name = "price")
     private double price;
     @ManyToOne
     @JoinColumn(name = "category_id")
-    @JsonIgnoreProperties
     private Category category;
 }

@@ -1,5 +1,6 @@
 package io.fitness.ecom.controllers;
 
+import io.fitness.ecom.modals.Product;
 import io.fitness.ecom.services.ProductService;
 import io.fitness.ecom.services.dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
