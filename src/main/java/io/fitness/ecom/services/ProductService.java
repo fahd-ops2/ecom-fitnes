@@ -24,9 +24,8 @@ public class ProductService {
     }
 
     public Page<ProductDto> getAllProducts(Pageable pageable) {
-        log.info(pageable.getPageNumber() + " / " + pageable.getPageSize());
         Page page = productRepository.findAll(pageable);
-        List<ProductDto> productDtos = ProductMapper.INSTANCE.productsToProductDtos(page.getContent());
-        return new PageImpl<>(productDtos, page.getPageable(), page.getTotalElements());
+        List<ProductDto> products = ProductMapper.INSTANCE.productsToProductDtos(page.getContent());
+        return new PageImpl<>(products, page.getPageable(), page.getTotalElements());
     }
 }

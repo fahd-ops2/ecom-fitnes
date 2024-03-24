@@ -23,7 +23,7 @@ public class StoreService {
 
     public Page<StoreDto> getAllStores(Pageable pageable) {
         Page page = storeRepository.findAll(pageable);
-        List<StoreDto> storeDtos = StoreMapper.INSTANCE.storesToStoreDtos(page.getContent());
-        return new PageImpl<>(storeDtos, page.getPageable(), page.getTotalElements());
+        List<StoreDto> stores = StoreMapper.INSTANCE.storesToStoreDtos(page.getContent());
+        return new PageImpl<>(stores, page.getPageable(), page.getTotalElements());
     }
 }
