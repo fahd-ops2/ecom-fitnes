@@ -1,5 +1,6 @@
 package io.fitness.ecom.modals;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class Store {
     @JoinColumn(name = "provider_id")
     private Provider provider;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "store")
     private List<Stock> stocks;
 }
