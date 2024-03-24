@@ -1,5 +1,6 @@
 package io.fitness.ecom.modals;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class Category {
     private Long id;
     @Column(name = "name")
     private String name;
+    @JsonIgnore
     @OneToMany(mappedBy = "category",fetch = FetchType.LAZY)
     private List<Product> products;
 }
