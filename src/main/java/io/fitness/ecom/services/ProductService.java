@@ -1,6 +1,7 @@
 package io.fitness.ecom.services;
 
 import io.fitness.ecom.dao.ProductRepository;
+import io.fitness.ecom.modals.Category;
 import io.fitness.ecom.modals.Product;
 import io.fitness.ecom.services.dto.ProductDto;
 import io.fitness.ecom.services.mappers.ProductMapper;
@@ -27,5 +28,11 @@ public class ProductService {
         Page page = productRepository.findAll(pageable);
         List<ProductDto> products = ProductMapper.INSTANCE.productsToProductDtos(page.getContent());
         return new PageImpl<>(products, page.getPageable(), page.getTotalElements());
+    }
+
+    public Page<ProductDto> getProductsByCategory(Pageable pageable, String category) {
+        Page<Product> productsByCategory = productRepository.findByCategory(pageable, category);
+        List<ProductDto> products = ProductMapper.INSTANCE.productsToProductDtos(productsByCategory.getContent());
+        return new PageImpl<>(products, productsByCategory.getPageable(), productsByCategory.getTotalElements());
     }
 }

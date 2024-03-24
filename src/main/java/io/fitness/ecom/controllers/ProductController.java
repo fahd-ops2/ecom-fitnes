@@ -1,6 +1,5 @@
 package io.fitness.ecom.controllers;
 
-import io.fitness.ecom.modals.Product;
 import io.fitness.ecom.services.ProductService;
 import io.fitness.ecom.services.dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -27,8 +28,16 @@ public class ProductController {
     @GetMapping("/all")
     public Page<ProductDto> getAllProducts(@RequestParam("page") int page,
                                            @RequestParam("size") int size) {
-
         Pageable pageable = PageRequest.of(page, size);
         return productService.getAllProducts(pageable);
     }
+
+    @GetMapping("/byCategory")
+    public Page<ProductDto> getProductsByCategory(@RequestParam("page") int page,
+                                                  @RequestParam("size") int size,
+                                                  @RequestParam("category") String category) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productService.getProductsByCategory(pageable,category);
+    }
+
 }
