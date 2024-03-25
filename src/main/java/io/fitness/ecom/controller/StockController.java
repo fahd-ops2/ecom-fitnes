@@ -1,4 +1,4 @@
-package io.fitness.ecom.controllers;
+package io.fitness.ecom.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

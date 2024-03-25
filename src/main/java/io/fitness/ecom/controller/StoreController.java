@@ -1,4 +1,4 @@
-package io.fitness.ecom.controllers;
+package io.fitness.ecom.controller;
 
 import io.fitness.ecom.service.impl.StoreServiceImpl;
 import io.fitness.ecom.dto.StoreDto;
