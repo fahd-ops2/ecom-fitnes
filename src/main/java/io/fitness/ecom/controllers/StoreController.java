@@ -1,7 +1,7 @@
 package io.fitness.ecom.controllers;
 
-import io.fitness.ecom.services.StoreService;
-import io.fitness.ecom.services.dto.StoreDto;
+import io.fitness.ecom.service.impl.StoreServiceImpl;
+import io.fitness.ecom.dto.StoreDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/v1/stores")
 public class StoreController {
-    private final StoreService storeService;
+    private final StoreServiceImpl storeService;
 
     @Autowired
-    public StoreController(StoreService storeService) {
+    public StoreController(StoreServiceImpl storeService) {
         this.storeService = storeService;
     }
 

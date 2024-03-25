@@ -1,10 +1,10 @@
 package io.fitness.ecom;
 
-import io.fitness.ecom.dao.ProductRepository;
-import io.fitness.ecom.modals.Product;
-import io.fitness.ecom.services.ProductService;
-import io.fitness.ecom.services.dto.ProductDto;
-import io.fitness.ecom.services.mappers.ProductMapper;
+import io.fitness.ecom.repository.ProductRepository;
+import io.fitness.ecom.entity.Product;
+import io.fitness.ecom.service.impl.ProductServiceImpl;
+import io.fitness.ecom.dto.ProductDto;
+import io.fitness.ecom.mapper.ProductMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -53,7 +53,7 @@ public class ProductServiceTest {
         );
         //when(productMapper.productsToProductDtos(dummyPage.getContent())).thenReturn(dummyProductDTOs);
 
-        ProductService productService = new ProductService(productRepository);
+        ProductServiceImpl productService = new ProductServiceImpl(productRepository);
         Page<ProductDto> result = productService.getProductsByCategory(pageable, category);
 
         assertThat(result.getContent()).hasSize(1);
