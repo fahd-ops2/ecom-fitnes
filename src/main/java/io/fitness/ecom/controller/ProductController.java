@@ -31,11 +31,19 @@ public class ProductController {
     }
 
     @GetMapping("/byCategory")
-    public Page<ProductDto> getProductsByCategory(@RequestParam("page") int page,
-                                                  @RequestParam("size") int size,
+    public Page<ProductDto> getProductsByCategory(@RequestParam(name = "page", defaultValue = "0") int page,
+                                                  @RequestParam(name = "size", defaultValue = "10") int size,
                                                   @RequestParam("category") String category) {
         Pageable pageable = PageRequest.of(page, size);
         return productService.getProductsByCategory(pageable,category);
+    }
+
+    @GetMapping("/byProvider")
+    public Page<ProductDto> getProductsByProvider(@RequestParam(name = "page", defaultValue = "0") int page,
+                                                  @RequestParam(name = "size", defaultValue = "10") int size,
+                                                  @RequestParam("provider") long provider) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productService.findByProvider(pageable,provider);
     }
 
 }

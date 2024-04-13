@@ -35,4 +35,10 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDto> products = ProductMapper.INSTANCE.productsToProductDtos(productsByCategory.getContent());
         return new PageImpl<>(products, productsByCategory.getPageable(), productsByCategory.getTotalElements());
     }
+
+    @Override
+    public Page<ProductDto> findByProvider(Pageable pageable, long provider) {
+        List<ProductDto> products = ProductMapper.INSTANCE.productsToProductDtos(productRepository.findByProvider(pageable, provider).getContent());
+        return new PageImpl<>(products, pageable, products.size());
+    }
 }
