@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: add_product_tracability_table
+      author: Fahd Bouacherine
+      changes:
+        - createTable:
+            tableName: products_histories
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: products_fk_products_histories_id
+                    references: products(id)
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: price
+                  type: decimal
+              - column:
+                  name: action
+                  type: varchar(50)
+              - column:
+                  name: action_timestamp
+                  type: timestamp

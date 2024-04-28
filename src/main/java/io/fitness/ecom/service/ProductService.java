@@ -13,4 +13,10 @@ public interface ProductService {
 
     Page<ProductDto> findByProvider(Pageable pageable, long provider);
 
+    ProductDto createProduct(ProductDto productDto);
+
+    ProductDto updateProduct(ProductDto productDto, long id);
+
+    void deleteProduct(long id);
+
     }

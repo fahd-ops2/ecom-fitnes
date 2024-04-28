@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: liquibase/changelogs/initiate-database.yaml
+  - include:
+      file: liquibase/changelogs/add_product_tracability_table.yaml
