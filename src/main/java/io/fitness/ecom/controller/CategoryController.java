@@ -1,5 +1,6 @@
 package io.fitness.ecom.controller;
 
+import io.fitness.ecom.service.CategoryService;
 import io.fitness.ecom.service.impl.CategoryServiceImpl;
 import io.fitness.ecom.dto.CategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.util.List;
 @RequestMapping("api/v1/categories")
 public class CategoryController {
 
-    private final CategoryServiceImpl categoryService;
+    private final CategoryService categoryService;
 
     @Autowired
     public CategoryController(CategoryServiceImpl categoryService) {

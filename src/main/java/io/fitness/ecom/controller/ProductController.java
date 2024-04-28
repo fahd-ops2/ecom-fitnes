@@ -1,6 +1,6 @@
 package io.fitness.ecom.controller;
 
-import io.fitness.ecom.service.impl.ProductServiceImpl;
+import io.fitness.ecom.service.ProductService;
 import io.fitness.ecom.dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/products")
 public class ProductController {
 
-    private final ProductServiceImpl productService;
+    private final ProductService productService;
 
     @Autowired
-    public ProductController(ProductServiceImpl productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 

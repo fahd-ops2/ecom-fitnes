@@ -1,7 +1,6 @@
 package io.fitness.ecom.service;
 
 import io.fitness.ecom.dto.ProductDto;
-import io.fitness.ecom.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
